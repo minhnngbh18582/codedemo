@@ -37,11 +37,6 @@ router.get('/list', async (req,res)=>{
     res.render('list', { dataItem: dataItem });
 });
 
-router.get('/create', (req, res) => {
-    res.render('create');
-});
-
-
 //view detail
 router.get('/:slug', async (req, res) => {
     let data = await Data.findOne({ slug: req.params.slug });
@@ -51,6 +46,11 @@ router.get('/:slug', async (req, res) => {
     } else {
         res.redirect('/');
     }
+});
+
+//routes create
+router.get('/create', (req, res) => {
+    res.render('create');
 });
 
 //handles new post
